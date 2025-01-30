@@ -1,71 +1,121 @@
-# Raydium Sniper Bot
 
-This project enables users to monitor the price of all tokens in Solana Blockchain.
-And it also allows users to buy and sell tokens if it is good for the client requirements.
-Especially, this project allows users to monitor all the new SPL tokens in Raydium within 10 seconds.
+```markdown
+# Solana Snipe Bot
 
-* This project has backend
+A Solana snipe bot designed to help users snipe new tokens on the Solana blockchain. This bot automates the process of buying tokens as soon as they are listed on decentralized exchanges (DEXs) like Raydium or Orca.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Automated Sniping**: Automatically buys tokens as soon as they are listed on supported DEXs.
+- **Customizable Parameters**: Set your own parameters for sniping, such as token address, buy amount, and slippage.
+- **Real-Time Monitoring**: Monitors the blockchain in real-time for new token listings.
+- **Secure**: Built with security in mind to protect your private keys and funds.
 
-### `npm install`
-Install all the dependencies.\
+## Prerequisites
 
-### `npm start`
+Before using this bot, ensure you have the following:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Node.js**: Install Node.js (version 16 or higher).
+2. **Solana CLI**: Install the Solana CLI tools.
+3. **Wallet**: A Solana wallet with some SOL for transaction fees.
+4. **RPC URL**: A Solana RPC endpoint (you can use a public one or a private service like [QuickNode](https://www.quicknode.com/)).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/beatrizmendoncadeoliveira/solana-snipe.git
+   cd solana-snipe
+   ```
 
-Builds the app for production to the `build` folder.\
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Rename the `.env.example` file to `.env` and update it with your configuration:
+   ```env
+   PRIVATE_KEY=your_solana_wallet_private_key
+   RPC_URL=https://api.mainnet-beta.solana.com
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   **Note**: Never share your private key publicly. Keep it secure.
 
-### `npm run eject`
+4. Compile the TypeScript code (if applicable):
+   ```bash
+   npm run build
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Run the Bot**:
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Configure Sniping**:
+   - Modify the `config.json` file to set your sniping parameters:
+     ```json
+     {
+       "tokenAddress": "TOKEN_ADDRESS_TO_SNIPE",
+       "buyAmount": 0.1, // Amount of SOL to spend
+       "slippage": 10, // Slippage tolerance in percentage
+       "dex": "raydium" // Supported DEX: raydium, orca
+     }
+     ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Monitor the Bot**:
+   - The bot will monitor the blockchain for new token listings and automatically execute buy orders based on your configuration.
 
-## Learn More
+## Configuration Options
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **tokenAddress**: The token address you want to snipe.
+- **buyAmount**: The amount of SOL to spend on the token.
+- **slippage**: The maximum slippage tolerance (in percentage).
+- **dex**: The decentralized exchange to use (`raydium` or `orca`).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Example
 
-### Code Splitting
+To snipe a token with the address `TokenAddress123` on Raydium with 0.1 SOL and 10% slippage:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Update `config.json`:
+   ```json
+   {
+     "tokenAddress": "TokenAddress123",
+     "buyAmount": 0.1,
+     "slippage": 10,
+     "dex": "raydium"
+   }
+   ```
 
-### Analyzing the Bundle Size
+2. Run the bot:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Security
 
-### Making a Progressive Web App
+- **Private Key**: Never share your private key. Store it securely in the `.env` file.
+- **Testnet**: Test the bot on Solana's devnet or testnet before using it on the mainnet.
+- **Funds**: Only use funds you can afford to lose. Sniping tokens is risky and can result in losses.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Contributions are welcome! If you'd like to contribute, please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Submit a pull request.
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### `npm run build` fails to minify
+## Disclaimer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This bot is provided as-is, without any guarantees. Use it at your own risk. The developers are not responsible for any financial losses incurred while using this bot.
+
+---
+
+For questions or support, please open an issue on GitHub or contact the maintainers.
+```
